@@ -147,11 +147,11 @@ func (c *Client) JobMetrics(opts JobMetricsOpts) (map[string]interface{}, error)
 	return r, err
 }
 
-type overviewResp struct {
-	Jobs []jobOverview `json:"jobs"`
+type OverviewResp struct {
+	Jobs []JobOverview `json:"jobs"`
 }
 
-type jobOverview struct {
+type JobOverview struct {
 	ID               string `json:"jid"`
 	Name             string `json:"name"`
 	State            string `json:"state"`
@@ -176,8 +176,8 @@ type status struct {
 }
 
 // JobsOverview returns an overview over all jobs.
-func (c *Client) JobsOverview() (overviewResp, error) {
-	var r overviewResp
+func (c *Client) JobsOverview() (OverviewResp, error) {
+	var r OverviewResp
 	req, err := http.NewRequest(
 		"GET",
 		c.url("/jobs/overview"),
